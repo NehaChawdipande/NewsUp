@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="medium" ng-style="{'text-align': left}">Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <span>News Headlines</span>
+  <span class="example-spacer"></span>
+  <br />
+  <div>
+    <ul class="list-nav">
+      <li class="list-item" *ngFor="let article of mArticles">
+        {{article.title}}
+      </li>
+    </ul>
+  </div>
+    </div>
+      <ion-card class="example-card" *ngFor="let article of mArticles">
+        <ion-card-header>
+          <div
+            ion-card-avatar
+            [ngStyle]="{'background-image': 'url(../assets/images/'+ article.source.id +'.png)'}"
+            class="example-header-image"
+          ></div>
+          <ion-card-title class="title">{{article.title}}</ion-card-title>
+          <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
+        </ion-card-header>
+        <img
+          ion-card-image
+          class="img-article"
+          src="{{article.urlToImage}}"
+          alt=""
+        />
+        <ion-card-content>
+          <p>{{article.description}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+</ion-content>

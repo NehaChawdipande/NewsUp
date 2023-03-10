@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Sources </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="medium">Sources</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button
+    *ngFor="let category of sourcesByCategory"
+    class="tab1-category--button"
+    >{{category}}</ion-button
+  >
+  <ion-card *ngFor="let source of mSources" class="tab1-card">
+    <ion-card-header>
+      <ion-card-title>{{source.name}}</ion-card-title>
+      <ion-card-subtitle>{{source.category}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content> {{source.description}} </ion-card-content>
+    <ion-button
+      fill="solid"
+      href="{{source.url}}"
+      class="tab1-card--button tab1-category--button"
+      ><h6>visit</h6></ion-button
+    >
+  </ion-card>
+</ion-content>

@@ -1,0 +1,16 @@
+.tab1 {
+  &-category {
+    display: flex;
+    flex-direction: row;
+    &--button {
+      --background-hover: rgb(66, 22, 107);
+      --background: blueviolet;
+    }
+  }
+  &-card {
+    padding: 2%;
+    &--button {
+      margin-left: 2%;
+    }
+  }
+}
