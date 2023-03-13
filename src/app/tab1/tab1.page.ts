@@ -7,21 +7,32 @@ import { NewsApiService } from '../news-api.service';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
+  selectedCategory: string;
   mSources: Array<any>;
   categories: Array<any>;
-  sourcesByCategory: Array<any>;
+  listOfCategories: Array<any>;
+  sortedSources: Array<any>;
+  tileColors: Array<string> = [
+    'primary',
+    'secondary',
+    'tertiary',
+    'warning',
+    'success',
+    'dark',
+  ];
 
   constructor(private newsapi: NewsApiService) {
     this.mSources = [];
     this.categories = [];
-
-    this.sourcesByCategory = [];
+    this.listOfCategories = [];
+    this.sortedSources = [];
+    this.selectedCategory = 'Categories';
   }
   ngOnInit() {
     //load news sources
     this.newsapi.initSources().subscribe((data: any) => {
       this.mSources = data['sources'];
-      this.sourcesByCategory = Object.values(
+      this.listOfCategories = Object.values(
         this.mSources.reduce((a, { category }) => {
           a[category] = category;
           return a;
@@ -34,6 +45,12 @@ export class Tab1Page {
     //   console.log('complete', data);
     // });
   }
+  sort = () => {
+    this.sortedSources = this.mSources.filter(
+      (source: any) => source.category === this.selectedCategory
+    );
+    console.log(this.sortedSources);
+  };
   navigate = (url: string) => {
     window.open(url);
   };

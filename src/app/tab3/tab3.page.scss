@@ -6,23 +6,26 @@
     align-content: center;
     flex-direction: column;
     &--input {
-        height: 2rem;
-        padding: 4px 12px;
-        color: blueviolet;
-        border: solid 2px rgb(79, 79, 79);
-        border-radius: 12px;
-        &:focus-visible {
-            outline: blueviolet auto 1px;
-        }
+      height: 2rem;
+      padding: 4px 12px;
+      color: blueviolet;
+      border: solid 2px rgb(79, 79, 79);
+      border-radius: 12px;
+      &:focus-visible {
+        outline: blueviolet auto 1px;
+      }
     }
-    &--submit{ 
-        height: fit-content;
-        margin: 12px 0;
-        padding: 12px;
-        border-radius: 1rem;
-        color: white;
-        font-weight: 600;
-        background-color: blueviolet ;
+    &--submit {
+      height: fit-content;
+      margin: 12px 0;
+      padding: 12px;
+      border-radius: 1rem;
+      color: white;
+      font-weight: 600;
+      background-color: blueviolet;
+    }
+    @media (min-width: 768px) {
+      flex-wrap: wrap;
     }
   }
 }

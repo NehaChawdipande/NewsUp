@@ -20,26 +20,4 @@
       </li>
     </ul>
   </div>
-    </div>
-      <ion-card class="example-card" *ngFor="let article of mArticles">
-        <ion-card-header>
-          <div
-            ion-card-avatar
-            [ngStyle]="{'background-image': 'url(../assets/images/'+ article.source.id +'.png)'}"
-            class="example-header-image"
-          ></div>
-          <ion-card-title class="title">{{article.title}}</ion-card-title>
-          <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
-        </ion-card-header>
-        <img
-          ion-card-image
-          class="img-article"
-          src="{{article.urlToImage}}"
-          alt=""
-        />
-        <ion-card-content>
-          <p>{{article.description}}</p>
-        </ion-card-content>
-      </ion-card>
-    </ng-container>
 </ion-content>

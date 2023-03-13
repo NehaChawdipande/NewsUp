@@ -1,33 +1,55 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Sources </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="medium">Sources</ion-title>
+      <ion-icon
+        slot="start"
+        size="large"
+        name="chevron-back"
+        *ngIf="selectedCategory!=='Categories'"
+        (click)="selectedCategory='Categories'"
+        class="tab1-capitalise tab1-back"
+      >
+      </ion-icon>
+      <ion-title class="tab1-capitalise">{{selectedCategory}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-button
-    *ngFor="let category of sourcesByCategory"
-    class="tab1-category--button"
-    >{{category}}</ion-button
-  >
-  <ion-card *ngFor="let source of mSources" class="tab1-card">
-    <ion-card-header>
-      <ion-card-title>{{source.name}}</ion-card-title>
-      <ion-card-subtitle>{{source.category}}</ion-card-subtitle>
-    </ion-card-header>
+  <br />
 
-    <ion-card-content> {{source.description}} </ion-card-content>
-    <ion-button
-      fill="solid"
-      href="{{source.url}}"
-      class="tab1-card--button tab1-category--button"
-      ><h6>visit</h6></ion-button
-    >
-  </ion-card>
+  <div class="tab1">
+    <div class="tab1-category" *ngIf="selectedCategory==='Categories'">
+      <ion-button
+        *ngFor="let category of listOfCategories"
+        class="tab1-category--button"
+        (click)="selectedCategory=category; sort()"
+        >{{category}}</ion-button
+      >
+    </div>
+    <ion-accordion-group *ngIf="selectedCategory!=='Categories'">
+      <ion-accordion *ngFor="let source of sortedSources">
+        <ion-item slot="header">
+          <ion-label>{{source.name}}</ion-label>
+        </ion-item>
+        <div class="tab1-accordion" slot="content">
+          <h6>{{source.description}}</h6>
+          <ion-button
+            fill="solid"
+            class="tab1-sources--button"
+            href="{{source.url}}"
+            ><h6>visit</h6></ion-button
+          >
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+
+    <!-- <ion-card *ngFor="let source of sortedSources" class="tab1-card"> -->
+    <!-- <ion-card-header> -->
+    <!-- <ion-card-title>{{source.name}}</ion-card-title> -->
+    <!-- <ion-card-subtitle>{{source.category}}</ion-card-subtitle> -->
+    <!-- </ion-card-header> -->
+
+    <!-- <ion-card-content> {{source.description}} </ion-card-content> -->
+
+    <!-- </ion-card> -->
+  </div>
 </ion-content>

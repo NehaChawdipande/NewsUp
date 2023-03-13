@@ -1,16 +1,47 @@
 .tab1 {
+  padding: 0 4%;
+  &-capitalise {
+    text-transform: capitalize;
+  }
+  &-back {
+    margin-left: 4%;
+    color: rebeccapurple;
+  }
   &-category {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // flex-direction: row;
+    flex-wrap: wrap;
     &--button {
-      --background-hover: rgb(66, 22, 107);
-      --background: blueviolet;
+      height: 6rem;
+      margin: 0.5rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      --background: rebeccapurple;
+      --background-hover: rgb(98, 50, 142);
+      --background-activated: blueviolet;
+      --background-focused: blueviolet;
+    }
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
   &-card {
     padding: 2%;
     &--button {
+      text-transform: capitalize;
       margin-left: 2%;
+      --background: rebeccapurple;
+    }
+  }
+  &-accordion {
+    margin: 12px;
+  }
+  &-sources {
+    display: block;
+    &--button {
+      text-transform: capitalize;
+      --background: rebeccapurple;
     }
   }
 }
