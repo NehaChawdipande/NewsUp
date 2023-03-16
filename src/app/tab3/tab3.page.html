@@ -1,19 +1,34 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title size="medium" *ngIf="userLoggedIn">My Account</ion-title>
-    <ion-title size="medium" *ngIf="!userLoggedIn">Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="medium" *ngIf="userLoggedIn">My Account</ion-title>
-      <ion-title size="medium" *ngIf="!userLoggedIn">Login</ion-title>
+      <!-- <ion-buttons slot="start" *ngIf="selectedCategory!=='Categories'">
+        <ion-button
+          fill="clear"
+          (click)="selectedCategory='Categories'"
+          class="tab3-iconbutton"
+        >
+          <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+
+      <ion-title class="tab3-title">
+        <img class="tab3-logo" src="../../assets/logoText.png" alt="logo" />
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" class="tab3-iconbutton">
+          <ion-icon slot="icon-only" name="exit"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+  <br />
+  <div class="tab3">
+    <h3>Weather for today</h3>
+    <hr class="tab3-divider" />
 
-  <form #loginForm="ngForm" class="tab3-form">
+    <h3>Weather forecast for the week</h3>
+  </div>
+  <!-- <form #loginForm="ngForm" class="tab3-form">
     <h5
       *ngIf="loginForm.value.email === '' || loginForm.value.password===''"
       [ngStyle]="{'color': 'blueviolet', 'font-weight': '600'}"
@@ -43,5 +58,5 @@
       <br />
       User logged in?: {{userLoggedIn}}
     </h6>
-  </form>
+  </form> -->
 </ion-content>

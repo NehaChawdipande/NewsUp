@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.newsup",
+  "appName": "NewsUp",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

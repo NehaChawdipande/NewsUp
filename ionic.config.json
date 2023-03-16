@@ -1,5 +1,8 @@
 {
-  "name": "ionic-app-base",
-  "integrations": {},
+  "name": "NewsUp",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }

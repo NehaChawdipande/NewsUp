@@ -1,23 +1,165 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="medium" ng-style="{'text-align': left}">Home</ion-title>
+      <ion-buttons slot="start" *ngIf="selectedCategory!=='Categories'">
+        <ion-button
+          fill="clear"
+          (click)="selectedCategory='Categories'"
+          class="tab2-iconbutton"
+        >
+          <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-title class="tab2-title">
+        <img class="tab2-logo" src="../../assets/logoText.png" alt="logo" />
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" class="tab2-iconbutton">
+          <ion-icon slot="icon-only" name="exit"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <span>News Headlines</span>
-  <span class="example-spacer"></span>
+  <!-- <ion-segment
+    value="default"
+    color="tertiary"
+    *ngIf="selectedCategory==='Categories'"
+  >
+    <ion-segment-button value="default" (click)="mSwitchArticles=true">
+      <ion-label class="tab2-capitalise">News</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="segment" (click)="mSwitchArticles=false">
+      <ion-label class="tab2-capitalise">Sources</ion-label>
+    </ion-segment-button>
+  </ion-segment> -->
+
   <br />
-  <div>
-    <ul class="list-nav">
-      <li class="list-item" *ngFor="let article of mArticles">
-        {{article.title}}
-      </li>
-    </ul>
+  <div class="tab2">
+    <h3 class="tab2-capitalise">
+      {{selectedCategory==='Categories'? 'Read by category' : selectedCategory}}
+    </h3>
+    <hr class="tab2-divider" />
+
+    <div class="tab2-category" *ngIf="selectedCategory==='Categories'">
+      <ion-tab-button
+        class="tab2-category--button"
+        tab="general"
+        (click)="selectedCategory='general'; sort()"
+      >
+        <ion-icon name="globe-outline"></ion-icon>
+        <ion-label>General</ion-label>
+      </ion-tab-button>
+      <ion-tab-button
+        class="tab2-category--button"
+        tab="business"
+        (click)="selectedCategory='business'; sort()"
+      >
+        <ion-icon name="business-outline"></ion-icon>
+        <ion-label>Business</ion-label>
+      </ion-tab-button>
+      <ion-tab-button
+        class="tab2-category--button"
+        tab="film"
+        (click)="selectedCategory='entertainment'; sort()"
+      >
+        <ion-icon name="film-outline"></ion-icon>
+        <ion-label>Film</ion-label>
+      </ion-tab-button>
+      <ion-tab-button
+        class="tab2-category--button"
+        tab="sports"
+        (click)="selectedCategory='sports'; sort()"
+      >
+        <ion-icon name="american-football-outline"></ion-icon>
+        <ion-label>Sports</ion-label>
+      </ion-tab-button>
+      <ion-tab-button
+        class="tab2-category--button"
+        tab="film"
+        (click)="selectedCategory='technology'; sort()"
+      >
+        <ion-icon name="desktop-outline"></ion-icon>
+        <ion-label>Tech</ion-label>
+      </ion-tab-button>
+      <ion-tab-button
+        class="tab2-category--button"
+        tab="health"
+        (click)="selectedCategory='health'; sort()"
+      >
+        <ion-icon name="medkit-outline"></ion-icon>
+        <ion-label>Health</ion-label>
+      </ion-tab-button>
+      <ion-tab-button
+        class="tab2-category--button"
+        tab="science"
+        (click)="selectedCategory='science'; sort()"
+      >
+        <ion-icon name="flask-outline"></ion-icon>
+        <ion-label>Science</ion-label>
+      </ion-tab-button>
+    </div>
+    <ion-accordion-group
+      *ngIf="selectedCategory!=='Categories' && mSwitchArticles===false"
+    >
+      <ion-accordion *ngFor="let source of sortedData">
+        <ion-item slot="header">
+          <ion-label>{{source.name}}</ion-label>
+        </ion-item>
+        <div class="tab2-accordion" slot="content">
+          <h6>{{source.description}}</h6>
+          <ion-button
+            fill="solid"
+            class="tab2-sources--button"
+            href="{{source.url}}"
+            ><h6>visit</h6></ion-button
+          >
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+
+    <div *ngIf="selectedCategory!=='Categories' && mSwitchArticles===true">
+      <ion-card *ngFor="let article of sortedData" class="tab2-card">
+        <img
+          alt="Cover image"
+          src="{{article.urlToImage ? article.urlToImage : defaultImgUrl}}"
+        />
+        <ion-card-header>
+          <ion-card-title>{{article.title}}</ion-card-title>
+          <ion-card-subtitle>
+            <h6>{{article.source.name}}</h6>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{article.description}}
+          <button class="tab2-card--read">Read more</button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <br />
+
+    <h3>Top headlines</h3>
+    <hr class="tab2-divider" />
+
+    <div *ngFor="let latest of mArticles;let i=index;">
+      <ion-card *ngIf="i<5" class="tab2-card">
+        <img
+          alt="Silhouette of mountains"
+          src="{{latest.urlToImage ? latest.urlToImage : defaultImgUrl}}"
+        />
+        <ion-card-header>
+          <ion-card-title>{{latest.title}}</ion-card-title>
+          <ion-card-subtitle>
+            <h6>{{latest.source.name}}</h6>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{latest.description}}
+          <button class="tab2-card--read">Read more</button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <ion-button class="tab2-card--button">View all latest news</ion-button>
   </div>
+  <br />
 </ion-content>

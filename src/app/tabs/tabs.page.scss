@@ -1,14 +1,14 @@
 .tabs {
   &--button {
     .tab-selected {
-      --color-selected: blueviolet;
+      --color-selected: #6fc524;
     }
     .tab {
-      --ripple-color: blueviolet;
-      --color-focused: rgb(66, 22, 107);
-      --background-focused: rgb(66, 22, 107);
-      // --background: blueviolet;
+      --ripple-color: #6fc524;
+      --color-focused: #5cbf05;
+      --background-focused: #5cbf05;
+      --ion-color-primary: #5cbf05;
     }
-    color: blueviolet;
+    color: #6fc524;
   }
 }

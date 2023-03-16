@@ -1,4 +1,30 @@
 .tab3 {
+  &-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  &-logo {
+    height: 2rem;
+    width: auto;
+  }
+  &-capitalise {
+    text-transform: capitalize;
+  }
+  &-divider {
+    margin-bottom: 1rem;
+    border-top: 1px solid #6fc524;
+  }
+  &-iconbutton {
+    color: #67b91f;
+    --ripple-color: #6fc524;
+    --color-focused: #5cbf05;
+    --background-focused: #5cbf05;
+    --ion-color-primary: #5cbf05;
+  }
   &-form {
     display: flex;
     padding: 20px 10%;
