@@ -3,7 +3,10 @@
     // display: block;
     // h3 {
     //   color: #f7f3f3;
-    // }
+    // }\
+    &-inline{
+      display: inline-flex;
+    }
     &-title {
       position: absolute;
       top: 0;
@@ -21,7 +24,7 @@
     }
     &-back {
       margin-left: 4%;
-      color: #6fc524;
+      color: #fe651d;
     }
     &-category {
       display: grid;
@@ -34,10 +37,10 @@
         margin: 0.5rem;
         font-weight: 600;
         text-transform: capitalize;
-        border: 2px solid #6fc524;
-        color: #6fc524;
-        border-radius: 4rem;
-        --background: transparent;
+        border: 2px solid #fff3ee;
+        color: #343434;
+        border-radius: 1rem;
+        --background: #fff3ee;
         .button-inner {
           display: flex;
           flex-direction: column;
@@ -58,18 +61,18 @@
         text-transform: capitalize;
         margin-left: 2%;
         background: transparent;
-        color: #6fc524;
+        color: #fe651d;
         font-weight: bold;
       }
       &--button {
         display: flex;
         text-transform: capitalize;
-        --background: #6fc524;
+        --background: #fe651d;
       }
     }
     &-divider {
       margin-bottom: 1rem;
-      border-top: 1px solid #6fc524;
+      border-top: 1px solid #fe651d;
     }
     &-accordion {
       margin: 12px;
@@ -78,15 +81,15 @@
       display: block;
       &--button {
         text-transform: capitalize;
-        --background: #6fc524;
+        --background: #fe651d;
       }
     }
     &-iconbutton {
-      color: #67b91f;
-      --ripple-color: #6fc524;
-      --color-focused: #5cbf05;
-      --background-focused: #5cbf05;
-      --ion-color-primary: #5cbf05;
+      color: #fe651d;
+      --ripple-color: #fe651d;
+      --color-focused: #fe651d;
+      --background-focused: #fe651d;
+      --ion-color-primary: #fe651d;
     }
   }
   

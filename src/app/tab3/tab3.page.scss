@@ -16,14 +16,14 @@
   }
   &-divider {
     margin-bottom: 1rem;
-    border-top: 1px solid #6fc524;
+    border-top: 1px solid black;
   }
   &-iconbutton {
-    color: #67b91f;
-    --ripple-color: #6fc524;
-    --color-focused: #5cbf05;
-    --background-focused: #5cbf05;
-    --ion-color-primary: #5cbf05;
+    color: #fe651d;
+    --ripple-color: #fe651d;
+    --color-focused: #fe651d;
+    --background-focused: #fe651d;
+    --ion-color-primary: #fe651d;
   }
   &-form {
     display: flex;
@@ -34,11 +34,11 @@
     &--input {
       height: 2rem;
       padding: 4px 12px;
-      color: blueviolet;
+      color: #fe651d;
       border: solid 2px rgb(79, 79, 79);
       border-radius: 12px;
       &:focus-visible {
-        outline: blueviolet auto 1px;
+        outline: #fe651d auto 1px;
       }
     }
     &--submit {

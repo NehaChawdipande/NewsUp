@@ -1,20 +1,24 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- <ion-buttons slot="start" *ngIf="selectedCategory!=='Categories'">
-      <ion-button
-        fill="clear"
-        (click)="selectedCategory='Categories'"
-        class="navbar-iconbutton"
-      >
-        <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
-
+  <ion-toolbar color="dark">
     <ion-title class="navbar-title">
       <img class="navbar-logo" src="../../assets/logoText.png" alt="logo" />
     </ion-title>
     <div slot="end">
       <ion-select
+        placeholder="{{ selectedCountryCode }}"
+        interface="popover"
+        (ionChange)="setCountryCode($event)"
+        [ngStyle]="{
+          'padding-right': '20px'
+        }"
+      >
+        <div *ngFor="let country of countryList">
+          <ion-select-option value="{{ country.isoCode }}" :key="state.id"
+            >{{ country.name }}, {{ country.isoCode }}</ion-select-option
+          >
+        </div>
+      </ion-select>
+      <!-- <ion-select
         placeholder="State"
         interface="popover"
         (ionChange)="setStateCode($event)"
@@ -35,7 +39,7 @@
         <div *ngFor="let city of cityList">
           <ion-select-option :key="city.id">{{ city.name }}</ion-select-option>
         </div>
-      </ion-select>
+      </ion-select> -->
     </div>
 
     <!-- <ion-buttons slot="end">

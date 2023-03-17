@@ -6,8 +6,10 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NewsApiService } from './news-api.service';
+import { NewsApiService } from './services/news-api.service';
+import { DataService } from './services/data.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,8 +19,15 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     HttpClientModule,
     NavbarComponent,
+    IonicStorageModule.forRoot(),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy,
+    },
+    DataService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,23 +1,31 @@
-import { Component } from '@angular/core';
-import { NewsApiService } from '../news-api.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NewsApiService } from '../services/news-api.service';
+import { Storage } from '@ionic/storage-angular';
+import { Subscription } from 'rxjs';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit, OnDestroy {
   selectedCategory: string;
   mSources: Array<any>;
   mArticles: Array<any>;
-  mSwitchArticles: boolean; //true if switch is for articles
+  mSwitchArticles: boolean;
   categories: Array<any>;
   listOfCategories: Array<any>;
   sortedData: Array<any>;
   selectedCountry: string;
   defaultImgUrl: string;
+  subscription = new Subscription();
 
-  constructor(private newsapi: NewsApiService) {
+  constructor(
+    private newsapi: NewsApiService,
+    private data: DataService,
+    private storage: Storage
+  ) {
     this.mSources = [];
     this.categories = [];
     this.listOfCategories = [
@@ -33,53 +41,40 @@ export class Tab2Page {
     this.mArticles = [];
     this.mSwitchArticles = true;
     this.selectedCategory = 'Categories';
-    this.selectedCountry = 'in';
+    this.selectedCountry = 'IN';
     this.defaultImgUrl =
-      'https://ionicframework.com/docs/img/demos/card-media.png';
-    // ae,ar,at,au,be,bg,br,ca,ch,cn,co,cu,cz,de,eg,fr,gb,gr,hk,hu,id,ie,il,in,it,jp,kr,lt,lv,ma,mx,my,ng,nl,no,nz,ph,pl,pt,ro,rs,ru,sa,se,sg,si,sk,th,tr,tw,ua,us,ve,za
+      'https://www.shutterstock.com/image-illustration/breaking-news-minimalistic-logo-on-260nw-1298244646.jpg';
   }
+
   ngOnInit() {
-    if (this.mSwitchArticles) {
+    this.subscription = this.data.currentCountry.subscribe((code: string) => {
+      this.selectedCountry = code;
       //load articles
       this.newsapi.initArticles(this.selectedCountry).subscribe((data: any) => {
         this.mArticles = data['articles'];
-        // this.listOfCategories = Object.values(
-        //   this.mArticles.reduce((a, { category }) => {
-        //     a[category] = category;
-        //     return a;
-        //   }, {})
-        // );
-        console.log('articles', this.mArticles);
-        // console.log('listOfCategories');
       });
-    } else {
-      //load news sources
-      this.newsapi.initSources().subscribe((data: any) => {
-        this.mSources = data['sources'];
-        // this.listOfCategories = Object.values(
-        //   this.mSources.reduce((a, { category }) => {
-        //     a[category] = category;
-        //     return a;
-        //   }, {})
-        // );
-      });
-    }
+    });
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   sort = () => {
-    if (this.mSwitchArticles) {
-      this.newsapi
-        .initArticleByCategory(this.selectedCountry, this.selectedCategory)
-        .subscribe((data: any) => {
-          this.sortedData = data['articles'];
-          // console.log(this.sortedData);
-          // console.log('articles sorted', this.sortedData);
-        });
-    } else {
-      this.sortedData = this.mSources.filter(
-        (source: any) => source.category === this.selectedCategory
-      );
-      // console.log('sources sorted', this.sortedData);
-    }
+    // if (this.mSwitchArticles) {
+    this.storage.get('Country').then((val: any) => {
+      this.selectedCountry = val;
+    });
+    this.newsapi
+      .initArticleByCategory(this.selectedCountry, this.selectedCategory)
+      .subscribe((data: any) => {
+        this.sortedData = data['articles'];
+      });
+    // } else {
+    // this.sortedData = this.mSources.filter(
+    //   (source: any) => source.category === this.selectedCategory
+    // );
+    // }
   };
   navigate = (url: string) => {
     window.open(url);

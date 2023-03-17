@@ -1,6 +1,7 @@
 <ion-content [fullscreen]="true">
-  <ion-header [translucent]="true">
+  <!-- <ion-header [translucent]="true">
     <ion-toolbar>
+      
       <ion-buttons slot="start" *ngIf="selectedCategory!=='Categories'">
         <ion-button
           fill="clear"
@@ -10,7 +11,6 @@
           <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
         </ion-button>
       </ion-buttons>
-
       <ion-title class="tab2-title">
         <img class="tab2-logo" src="../../assets/logoText.png" alt="logo" />
       </ion-title>
@@ -20,7 +20,7 @@
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
   <!-- <ion-segment
     value="default"
     color="tertiary"
@@ -35,10 +35,33 @@
   </ion-segment> -->
 
   <br />
+  <br />
+  <br />
   <div class="tab2">
-    <h3 class="tab2-capitalise">
-      {{selectedCategory==='Categories'? 'Read by category' : selectedCategory}}
-    </h3>
+    <div class="tab2-inline">
+      <ion-button
+        slot="icon-only"
+        *ngIf="selectedCategory!=='Categories'"
+        fill="clear"
+        (click)="selectedCategory='Categories'"
+      >
+        <ion-icon
+          slot="icon-only"
+          name="chevron-back"
+          class="tab2-iconbutton"
+        ></ion-icon>
+        <ion-label
+          class="tab2-capitalise"
+          [ngStyle]="{'margin-left': '12px','font-size': 'larger'}"
+          >{{selectedCategory}}</ion-label
+        >
+      </ion-button>
+
+      <h3 class="tab2-capitalise" *ngIf="selectedCategory==='Categories'">
+        Read by category
+      </h3>
+    </div>
+
     <hr class="tab2-divider" />
 
     <div class="tab2-category" *ngIf="selectedCategory==='Categories'">
@@ -122,6 +145,7 @@
       <ion-card *ngFor="let article of sortedData" class="tab2-card">
         <img
           alt="Cover image"
+          *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
           src="{{article.urlToImage ? article.urlToImage : defaultImgUrl}}"
         />
         <ion-card-header>
@@ -145,6 +169,7 @@
       <ion-card *ngIf="i<5" class="tab2-card">
         <img
           alt="Silhouette of mountains"
+          *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
           src="{{latest.urlToImage ? latest.urlToImage : defaultImgUrl}}"
         />
         <ion-card-header>

@@ -55,7 +55,9 @@ yarn-error.log
 
 # Miscellaneous
 .env
-/environments
+/src/environments
+/resources/android
+/resources/ios
 /.angular
 /.angular/cache
 .sass-cache/
