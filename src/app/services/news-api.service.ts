@@ -8,9 +8,9 @@ export class NewsApiService {
   api_key = environment.NEWS_API_KEY;
 
   constructor(private http: HttpClient) {}
-  initSources() {
+  initSources(country:string) {
     return this.http.get(
-      'https://newsapi.org/v2/sources?language=en&apiKey=' + this.api_key
+      `https://newsapi.org/v2/sources?country=${country}&language=en&apiKey=` + this.api_key
     );
   }
   initSourceCategory(category: string) {

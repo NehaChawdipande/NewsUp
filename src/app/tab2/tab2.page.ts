@@ -53,6 +53,10 @@ export class Tab2Page implements OnInit, OnDestroy {
       this.newsapi.initArticles(this.selectedCountry).subscribe((data: any) => {
         this.mArticles = data['articles'];
       });
+      // load articles
+      this.newsapi.initSources(this.selectedCountry).subscribe((data: any) => {
+        this.mSources = data['sources'];
+      });
     });
   }
 

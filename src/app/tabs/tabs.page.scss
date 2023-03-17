@@ -1,13 +1,27 @@
 .tabs {
+  background-color: #2222;
   &--button {
+    padding: 8px 0;
+
+    background-color: #2222;
+
+    --ion-color-contrast: #fe651d;
+    ion-tab-button {
+      background-color: #2222;
+    }
     .tab-selected {
       --color-selected: #fe651d;
+      --color-focused: #fe651d;
+      --background-focused: #fe651d;
+      --ion-color-primary: #fe651d;
+      --ion-color-contrast: #fe651d;
     }
     .tab {
       --ripple-color: #fe651d;
       --color-focused: #fe651d;
       --background-focused: #fe651d;
       --ion-color-primary: #fe651d;
+      --ion-color-contrast: #fe651d;
     }
     color: #fe651d;
   }

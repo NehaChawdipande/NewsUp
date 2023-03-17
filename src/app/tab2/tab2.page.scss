@@ -1,95 +1,107 @@
 .tab2 {
-    padding: 0 4%;
-    // display: block;
-    // h3 {
-    //   color: #f7f3f3;
-    // }\
-    &-inline{
-      display: inline-flex;
-    }
-    &-title {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-    }
-    &-logo {
-      height: 2rem;
-      width: auto;
-    }
-    &-capitalise {
+  padding: 0 4%;
+  // display: block;
+  // h3 {
+  //   color: #f7f3f3;
+  // }\
+  &-inline {
+    display: inline-flex;
+  }
+  &-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  &-logo {
+    height: 2rem;
+    width: auto;
+  }
+  &-capitalise {
+    text-transform: capitalize;
+  }
+  &-back {
+    margin-left: 4%;
+    color: #fe651d;
+  }
+  &-category {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    // flex-direction: row;
+    flex-wrap: wrap;
+    &--button {
+      height: 6rem;
+      width: 6rem;
+      margin: 0.5rem;
+      font-weight: 600;
       text-transform: capitalize;
-    }
-    &-back {
-      margin-left: 4%;
-      color: #fe651d;
-    }
-    &-category {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      // flex-direction: row;
-      flex-wrap: wrap;
-      &--button {
-        height: 6rem;
-        width: 6rem;
-        margin: 0.5rem;
-        font-weight: 600;
-        text-transform: capitalize;
-        border: 2px solid #fff3ee;
-        color: #343434;
-        border-radius: 1rem;
-        --background: #fff3ee;
-        .button-inner {
-          display: flex;
-          flex-direction: column;
-        }
-      }
-      @media (min-width: 768px) {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    &-card {
-      margin: 0 0 1rem;
-      padding: 3%;
-      ion-card-header {
-        padding-bottom: 0;
-      }
-      &--read {
-        display: inline;
-        text-transform: capitalize;
-        margin-left: 2%;
-        background: transparent;
-        color: #fe651d;
-        font-weight: bold;
-      }
-      &--button {
+      border: 2px solid #fff3ee;
+      color: #343434;
+      border-radius: 1rem;
+      --background: #fff3ee;
+      .button-inner {
         display: flex;
-        text-transform: capitalize;
-        --background: #fe651d;
+        flex-direction: column;
       }
     }
-    &-divider {
-      margin-bottom: 1rem;
-      border-top: 1px solid #fe651d;
-    }
-    &-accordion {
-      margin: 12px;
-    }
-    &-sources {
-      display: block;
-      &--button {
-        text-transform: capitalize;
-        --background: #fe651d;
-      }
-    }
-    &-iconbutton {
-      color: #fe651d;
-      --ripple-color: #fe651d;
-      --color-focused: #fe651d;
-      --background-focused: #fe651d;
-      --ion-color-primary: #fe651d;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
-  
+  &-headlines {
+    display: grid;
+    grid-template-columns: 1fr;
+    // flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  &-card {
+    margin: 0 0 1rem;
+    padding: 3%;
+    ion-card-header {
+      padding-bottom: 0;
+    }
+    &--read {
+      display: inline;
+      text-transform: capitalize;
+      margin-left: 2%;
+      background: transparent;
+      color: #fe651d;
+      font-weight: bold;
+    }
+    &--button {
+      display: flex;
+      text-transform: capitalize;
+      --background: #fe651d;
+    }
+  }
+  &-divider {
+    margin-bottom: 1rem;
+    border-top: 1px solid #fe651d;
+  }
+  &-accordion {
+    margin: 12px;
+  }
+  &-sources {
+    display: block;
+    &--button {
+      text-transform: capitalize;
+      --background: #fe651d;
+    }
+  }
+  &-iconbutton {
+    color: #fe651d;
+    --ripple-color: #fe651d;
+    --color-focused: #fe651d;
+    --background-focused: #fe651d;
+    --ion-color-primary: #fe651d;
+  }
+}
