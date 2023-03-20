@@ -17,7 +17,9 @@ NEWS
  WEATHER
 <br/>
  
-![mobile (2)](https://user-images.githubusercontent.com/51154883/226305972-6067abba-4a2e-41e8-84c6-9526eb720f98.png)
+![mobile (6)](https://user-images.githubusercontent.com/51154883/226308493-241592fc-38ce-45d6-9ff0-de3caf192e6f.png)
+![mobile (7)](https://user-images.githubusercontent.com/51154883/226308505-1e2387e5-e789-4abc-be8d-66896b7926e2.png)
+
  - weather by search by city and country 
  - wetaher forcast for next 5 days
  - Manual search by city
