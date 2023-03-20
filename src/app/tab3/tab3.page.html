@@ -48,18 +48,20 @@
     <!-- <hr class="tab3-divider" /> -->
     <h5>Forecast for next few days</h5>
     <div [ngStyle]="{'display':'flex'}">
-      <ion-card
-        *ngFor="let item of forecast.list"
-        [ngStyle]="{'padding': '8px', 'margin':'4px', 'width': '100%',
+      <div
+        *ngFor="let item of forecast.list.slice(0,5)"
+        [ngStyle]="{'margin':'4px', 'width': '100%',
         'justify-content': 'space-between'}"
       >
-        <ion-card-subtitle> {{item.weather[0].main}} </ion-card-subtitle>
         <img
           [src]='"https://openweathermap.org/img/wn/"+item.weather[0].icon+".png"'
           alt="weather"
         />
-        <ion-card-subtitle> {{item.main.temp}} </ion-card-subtitle>
-      </ion-card>
+        <body>
+          {{item.main.temp}}
+          <br />{{item.weather[0].main}}
+        </body>
+      </div>
     </div>
     <br />
   </div>
