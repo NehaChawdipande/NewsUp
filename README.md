@@ -1,7 +1,9 @@
 # NewsUp
-Angular-Ionic News Application with newsApi, weatherApi.,
+<h3> Angular-Ionic News Application with newsApi, weatherApi., </h3>
+<br/>
 NEWS
 <br/>
+
 ![mobile (3)](https://user-images.githubusercontent.com/51154883/226306335-948aad24-ef2b-4419-b7de-dc14e816602f.png)
 ![mobile (4)](https://user-images.githubusercontent.com/51154883/226306917-e0e15535-2308-4bcb-8cdd-5ec3e58dcf7b.png)
 ![mobile (5)](https://user-images.githubusercontent.com/51154883/226306937-2b22ccd3-6437-4472-bb89-d41b12a68861.png)
