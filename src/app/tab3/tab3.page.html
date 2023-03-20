@@ -1,65 +1,66 @@
 <ion-content [fullscreen]="true">
-  <!-- <ion-header [translucent]="true"> -->
-    <!-- <ion-toolbar> -->
-      <!-- <ion-buttons slot="start" *ngIf="selectedCategory!=='Categories'">
-        <ion-button
-          fill="clear"
-          (click)="selectedCategory='Categories'"
-          class="tab3-iconbutton"
-        >
-          <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
-        </ion-button>
-      </ion-buttons> -->
-
-      <!-- <ion-title class="tab3-title">
-        <img class="tab3-logo" src="../../assets/logoText.png" alt="logo" />
-      </ion-title>
-      <ion-buttons slot="end">
-        <ion-button fill="clear" class="tab3-iconbutton">
-          <ion-icon slot="icon-only" name="exit"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header> -->
   <br />
-  <br/>
-  <br/>
-
+  <br />
+  <br />
   <div class="tab3">
-    <h3>Weather for today</h3>
-    <hr class="tab3-divider" />
-
-    <h3>Weather forecast for the week</h3>
-  </div>
-  <!-- <form #loginForm="ngForm" class="tab3-form">
-    <h5
-      *ngIf="loginForm.value.email === '' || loginForm.value.password===''"
-      [ngStyle]="{'color': 'blueviolet', 'font-weight': '600'}"
+    <ion-searchbar
+      placeholder="search city"
+      value="Nagpur"
+      color="light"
+      [ngStyle]="{'padding': '0', 'color':'#474747'}"
+      #search
+      ngModel
+      (ionBlur)="setCity($event)"
+    ></ion-searchbar>
+    <h6
+      [ngStyle]="{'margin':'12px 0 0 12px', 'color':'#474747', 'text-transform':'Uppercase'}"
     >
-      Please enter email and password
-    </h5>
-    <h5>Email :</h5>
-    <input type="email" name="email" ngModel class="tab3-form--input" />
-    <br />
-    <h5>Password:</h5>
-    <input type="password" name="password" ngModel class="tab3-form--input" />
-    <br />
-    <br />
-
-    <button
-      type="submit"
-      class="tab3-form--submit"
-      (click)="loginForm.value.email === '' || loginForm.value.password==='' ? userLoggedIn = false : userLoggedIn=true"
-    >
-      Login
-    </button>
-    <br />
-    <h6>
-      You entered email: {{ loginForm.value.email }}
-      <br />
-      You entered password: {{ loginForm.value.password }}
-      <br />
-      User logged in?: {{userLoggedIn}}
+      {{currentCity}}, {{localData.sys.country}}
     </h6>
-  </form> -->
+    <h1
+      [ngStyle]="{'align-self': 'center',
+       'font-size':'3rem','margin':'2% 0 0 4%','color':'#474747'}"
+      class="tab3-capitalise"
+    >
+      {{localData.main.temp}} °C
+    </h1>
+    <ion-chip color="primary"
+      >Feels like {{ localData.main.feels_like}}°C</ion-chip
+    >
+    <ion-chip color="primary"
+      >min {{localData.main.temp_min}}°C - max
+      {{localData.main.temp_max}}°C</ion-chip
+    >
+    <div [ngStyle]="{'display': 'flex', 'justify-content': 'center'}">
+      <img [src]="imageUrl" alt="weather-icon" />
+    </div>
+
+    <!-- 
+    <ion-chip color="primary">Humidity: {{ localData.main.humidity}}%</ion-chip>
+    <ion-chip color="primary"
+      >Pressure: {{ localData.main.pressure}} hPa</ion-chip
+    >
+    <ion-chip color="primary">
+      Wind speed: {{localData.wind.speed}} meter/sec</ion-chip
+    >
+    <ion-chip color="primary">Wind degrees: {{localData.wind.deg}}°</ion-chip> -->
+
+    <!-- <hr class="tab3-divider" /> -->
+    <h5>Forecast for next few days</h5>
+    <div [ngStyle]="{'display':'flex'}">
+      <ion-card
+        *ngFor="let item of forecast.list"
+        [ngStyle]="{'padding': '8px', 'margin':'4px', 'width': '100%',
+        'justify-content': 'space-between'}"
+      >
+        <ion-card-subtitle> {{item.weather[0].main}} </ion-card-subtitle>
+        <img
+          [src]='"https://openweathermap.org/img/wn/"+item.weather[0].icon+".png"'
+          alt="weather"
+        />
+        <ion-card-subtitle> {{item.main.temp}} </ion-card-subtitle>
+      </ion-card>
+    </div>
+    <br />
+  </div>
 </ion-content>

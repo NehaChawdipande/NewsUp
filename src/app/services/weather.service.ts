@@ -11,7 +11,12 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
   getCurrentWeather(city: string) {
     return this.http.get(
-      `http://api.weatherstack.com/current?access_key=${this.api_key}&query=${city}&units='m'`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.api_key}&units=metric` //default unit is in celsius
+    );
+  }
+  getForecast(city: string) {
+    return this.http.get(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.api_key}&units=metric` //default unit is in celsius
     );
   }
 }
