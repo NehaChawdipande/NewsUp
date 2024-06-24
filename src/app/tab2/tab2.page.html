@@ -4,96 +4,48 @@
   <br />
   <div class="tab2">
     <div class="tab2-inline">
-      <ion-button
-        slot="icon-only"
-        *ngIf="selectedCategory!=='Categories'"
-        fill="clear"
-        (click)="selectedCategory='Categories'"
-      >
-        <ion-icon
-          slot="icon-only"
-          name="chevron-back"
-          class="tab2-iconbutton"
-        ></ion-icon>
-        <ion-label
-          class="tab2-capitalise"
-          [ngStyle]="{'margin-left': '12px','font-size': 'larger'}"
-          >{{selectedCategory}}</ion-label
-        >
+      <ion-button slot="icon-only" *ngIf="selectedCategory!=='Categories'" fill="clear"
+        (click)="selectedCategory='Categories'">
+        <ion-icon slot="icon-only" name="chevron-back" class="tab2-iconbutton"></ion-icon>
+        <ion-label class="tab2-capitalise"
+          [ngStyle]="{'margin-left': '12px','font-size': 'larger'}">{{selectedCategory}}</ion-label>
       </ion-button>
 
-      <h3 class="tab2-capitalise" *ngIf="selectedCategory==='Categories'">
-        Read by category
+      <h3 class="tab2-capitalise-title" *ngIf="selectedCategory==='Categories'">
+        Top Headlines
       </h3>
+      <div class="tab2-inline">
+        <ion-tab-button tab="general" (click)="selectedCategory='general'; sort()">
+          <ion-label>General</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="business" (click)="selectedCategory='business'; sort()">
+          <ion-label>Business</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="film" (click)="selectedCategory='entertainment'; sort()">
+          <ion-label>Film</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="sports" (click)="selectedCategory='sports'; sort()">
+          <ion-label>Sports</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="film" (click)="selectedCategory='technology'; sort()">
+          <ion-label>Tech</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="health" (click)="selectedCategory='health'; sort()">
+          <ion-label>Health</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="science" (click)="selectedCategory='science'; sort()">
+          <ion-label>Science</ion-label>
+        </ion-tab-button>
+      </div>
+
     </div>
 
     <hr class="tab2-divider" />
 
-    <div class="tab2-category" *ngIf="selectedCategory==='Categories'">
-      <ion-tab-button
-        class="tab2-category--button"
-        tab="general"
-        (click)="selectedCategory='general'; sort()"
-      >
-        <ion-icon name="globe-outline"></ion-icon>
-        <ion-label>General</ion-label>
-      </ion-tab-button>
-      <ion-tab-button
-        class="tab2-category--button"
-        tab="business"
-        (click)="selectedCategory='business'; sort()"
-      >
-        <ion-icon name="business-outline"></ion-icon>
-        <ion-label>Business</ion-label>
-      </ion-tab-button>
-      <ion-tab-button
-        class="tab2-category--button"
-        tab="film"
-        (click)="selectedCategory='entertainment'; sort()"
-      >
-        <ion-icon name="film-outline"></ion-icon>
-        <ion-label>Film</ion-label>
-      </ion-tab-button>
-      <ion-tab-button
-        class="tab2-category--button"
-        tab="sports"
-        (click)="selectedCategory='sports'; sort()"
-      >
-        <ion-icon name="american-football-outline"></ion-icon>
-        <ion-label>Sports</ion-label>
-      </ion-tab-button>
-      <ion-tab-button
-        class="tab2-category--button"
-        tab="film"
-        (click)="selectedCategory='technology'; sort()"
-      >
-        <ion-icon name="desktop-outline"></ion-icon>
-        <ion-label>Tech</ion-label>
-      </ion-tab-button>
-      <ion-tab-button
-        class="tab2-category--button"
-        tab="health"
-        (click)="selectedCategory='health'; sort()"
-      >
-        <ion-icon name="medkit-outline"></ion-icon>
-        <ion-label>Health</ion-label>
-      </ion-tab-button>
-      <ion-tab-button
-        class="tab2-category--button"
-        tab="science"
-        (click)="selectedCategory='science'; sort()"
-      >
-        <ion-icon name="flask-outline"></ion-icon>
-        <ion-label>Science</ion-label>
-      </ion-tab-button>
-    </div>
     <div *ngIf="selectedCategory!=='Categories'">
       <ion-card *ngFor="let article of sortedData" class="tab2-card">
-        <img
-          alt="Cover image"
-          *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
-          src="{{article.urlToImage ? article.urlToImage : defaultImgUrl}}"
-        />
+        <img alt="Cover image" *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
+          src="{{article.urlToImage ? article.urlToImage : defaultImgUrl}}" />
         <ion-card-header>
           <ion-card-title>{{article.title}}</ion-card-title>
           <ion-card-subtitle>
@@ -107,17 +59,14 @@
       </ion-card>
     </div>
     <br />
-
+<!-- 
     <h3>Top headlines</h3>
-    <hr class="tab2-divider" />
+    <hr class="tab2-divider" /> -->
     <div class="tab2-headlines">
       <div *ngFor="let latest of mArticles.slice(0,6);">
         <ion-card class="tab2-card">
-          <img
-            alt="Silhouette of mountains"
-            *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
-            src="{{latest.urlToImage ? latest.urlToImage : defaultImgUrl}}"
-          />
+          <img alt="Silhouette of mountains" *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
+            src="{{latest.urlToImage ? latest.urlToImage : defaultImgUrl}}" />
           <ion-card-header>
             <ion-card-title>{{latest.title}}</ion-card-title>
             <ion-card-subtitle>
@@ -143,12 +92,9 @@
         </ion-item>
         <div class="tab2-accordion" slot="content">
           <h6>{{source.description}}</h6>
-          <ion-button
-            fill="solid"
-            class="tab2-sources--button"
-            href="{{source.url}}"
-            ><h6>visit</h6></ion-button
-          >
+          <ion-button fill="solid" class="tab2-sources--button" href="{{source.url}}">
+            <h6>visit</h6>
+          </ion-button>
         </div>
       </ion-accordion>
     </ion-accordion-group>

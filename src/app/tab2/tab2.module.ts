@@ -15,4 +15,6 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
   ],
   declarations: [Tab2Page]
 })
-export class Tab2PageModule {}
+export class Tab2PageModule {
+ categories = ["General", "Business", "Tech", "Sports", "Film", "Health", "Science"];
+}
