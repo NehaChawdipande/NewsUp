@@ -20,11 +20,11 @@
     border-top: 1px solid darkgray;
   }
   &-iconbutton {
-    color: #fe651d;
-    --ripple-color: #fe651d;
-    --color-focused: #fe651d;
-    --background-focused: #fe651d;
-    --ion-color-primary: #fe651d;
+    color: #091531;
+    --ripple-color: #091531;
+    --color-focused: #091531;
+    --background-focused: #091531;
+    --ion-color-primary: #091531;
   }
   &-form {
     display: flex;
@@ -35,11 +35,11 @@
     &--input {
       height: 2rem;
       padding: 4px 12px;
-      color: #fe651d;
+      color: #091531;
       border: solid 2px rgb(79, 79, 79);
       border-radius: 12px;
       &:focus-visible {
-        outline: #fe651d auto 1px;
+        outline: #091531 auto 1px;
       }
     }
     &--submit {

@@ -4,79 +4,73 @@
   <br />
   <div class="tab2">
     <div class="tab2-inline">
-      <ion-button slot="icon-only" *ngIf="selectedCategory!=='Categories'" fill="clear"
-        (click)="selectedCategory='Categories'">
-        <ion-icon slot="icon-only" name="chevron-back" class="tab2-iconbutton"></ion-icon>
-        <ion-label class="tab2-capitalise"
-          [ngStyle]="{'margin-left': '12px','font-size': 'larger'}">{{selectedCategory}}</ion-label>
-      </ion-button>
-
-      <h3 class="tab2-capitalise-title" *ngIf="selectedCategory==='Categories'">
+      <h3 class="tab2-capitalise-title">
         Top Headlines
       </h3>
-      <div class="tab2-inline">
+      <div class="tab2-inline tab2-categories">
         <ion-tab-button tab="general" (click)="selectedCategory='general'; sort()">
-          <ion-label>General</ion-label>
+          <ion-label  class="{{selectedCategory==='Categories' ? 'tab2-active' : '' }}">General</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="business" (click)="selectedCategory='business'; sort()">
-          <ion-label>Business</ion-label>
+          <ion-label class="{{selectedCategory==='business' ? 'tab2-active' : '' }}">Business</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="film" (click)="selectedCategory='entertainment'; sort()">
-          <ion-label>Film</ion-label>
+          <ion-label class="{{selectedCategory==='entertainment' ? 'tab2-active' : '' }}">Theatre</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="sports" (click)="selectedCategory='sports'; sort()">
-          <ion-label>Sports</ion-label>
+          <ion-label class="{{selectedCategory==='sports' ? 'tab2-active' : '' }}">Sports</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="film" (click)="selectedCategory='technology'; sort()">
-          <ion-label>Tech</ion-label>
+        <ion-tab-button tab="tech" (click)="selectedCategory='technology'; sort()">
+          <ion-label class="{{selectedCategory==='technology' ? 'tab2-active' : '' }}">Tech</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="health" (click)="selectedCategory='health'; sort()">
-          <ion-label>Health</ion-label>
+          <ion-label class="{{selectedCategory==='health' ? 'tab2-active' : '' }}">Health</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="science" (click)="selectedCategory='science'; sort()">
-          <ion-label>Science</ion-label>
+          <ion-label class="{{selectedCategory==='science' ? 'tab2-active' : '' }}">Science</ion-label>
         </ion-tab-button>
       </div>
 
     </div>
 
     <hr class="tab2-divider" />
-
-    <div *ngIf="selectedCategory!=='Categories'">
-      <ion-card *ngFor="let article of sortedData" class="tab2-card">
-        <img alt="Cover image" *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
-          src="{{article.urlToImage ? article.urlToImage : defaultImgUrl}}" />
+<div *ngIf="selectedCategory!=='Categories'" class="tab2-headlines">
+    <div  *ngFor="let latest of sortedData" >
+      <ion-card class="tab2-card">
+        <img alt="Silhouette of mountains"
+        src="{{latest.urlToImage ? latest.urlToImage : defaultImgUrl}}" />
         <ion-card-header>
-          <ion-card-title>{{article.title}}</ion-card-title>
+          <ion-card-title>{{latest.title}}</ion-card-title>
           <ion-card-subtitle>
-            <h6>{{article.source.name}}</h6>
+            {{latest.source.name}}
           </ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          {{article.description}}
-          <button class="tab2-card--read">Read more</button>
+          {{latest.description}}
         </ion-card-content>
+        <ion-button fill="clear">Read more</ion-button>
       </ion-card>
     </div>
+  </div>
     <br />
 <!-- 
     <h3>Top headlines</h3>
     <hr class="tab2-divider" /> -->
     <div class="tab2-headlines">
-      <div *ngFor="let latest of mArticles.slice(0,6);">
+      <div *ngFor="let latest of mArticles.slice(0,6);" >
         <ion-card class="tab2-card">
-          <img alt="Silhouette of mountains" *ngIf="selectedCountry ==='US' || selectedCountry ==='IN'"
-            src="{{latest.urlToImage ? latest.urlToImage : defaultImgUrl}}" />
+          <img alt="Silhouette of mountains"
+            src="{{latest.urlToImage ? latest.urlToImage : defaultImgUrl}}"/>
           <ion-card-header>
             <ion-card-title>{{latest.title}}</ion-card-title>
             <ion-card-subtitle>
-              <h6>{{latest.source.name}}</h6>
+              {{latest.source.name}}
             </ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             {{latest.description}}
-            <button class="tab2-card--read">Read more</button>
           </ion-card-content>
+          <ion-button fill="clear">Read more</ion-button>
         </ion-card>
       </div>
       <ion-button class="tab2-card--button">View all latest news</ion-button>

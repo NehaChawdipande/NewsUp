@@ -4,11 +4,20 @@
   // h3 {
   //   color: #f7f3f3;
   // }\
+  &-active{
+    color:#31477a
+  }
+  &-categories{
+    ion-label{
+      font-size: 1rem;
+    }
+  }
   &-inline {
     display: flex;
     align-items: baseline;
     justify-content: space-around;
     flex-direction: row;
+    flex-wrap: wrap;
   }
   &-title {
     position: absolute;
@@ -30,7 +39,7 @@
   }
   &-back {
     margin-left: 4%;
-    color: #031d08;
+    color: #091531;
   }
   &-category {
     display: grid;
@@ -63,15 +72,54 @@
     flex-wrap: wrap;
     gap: 12px;
     @media (min-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto, 1fr);
     }
     @media (min-width: 1024px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto, 1fr);
     }
   }
   &-card {
     margin: 0 0 1rem;
     padding: 3%;
+        height:fit-content;
+      // max-height: 30vh;
+      max-width: 30vw;
+      img {
+        max-width: 28vw;
+        object-fit: fill;
+        width: -webkit-fill-available;
+    object-fit: cover;
+    min-height: 16vh;
+    max-height: 20vh;
+
+      }
+      ion-card-subtitle{
+        font-size: small;
+        display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      /* white-space: nowrap; */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: .5rem auto .75rem auto;
+      }
+    ion-card-title{
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      /* white-space: nowrap; */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    ion-card-content{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 9vh;
+        max-height: 9vh;
+        text-overflow: ellipsis;
+    }
     ion-card-header {
       padding-bottom: 0;
     }
@@ -79,19 +127,16 @@
       display: inline;
       text-transform: capitalize;
       margin-left: 2%;
+      background-color: transparent;
+      color: #091531;
       background: transparent;
-      color: #031d08;
       font-weight: bold;
     }
-    &--button {
-      display: flex;
-      text-transform: capitalize;
-      --background: #031d08;
-    }
+
   }
   &-divider {
     margin-bottom: 1rem;
-    border-top: 1px solid #031d08;
+    border-top: 1px solid #091531;
   }
   &-accordion {
     margin: 12px;
@@ -100,14 +145,14 @@
     display: block;
     &--button {
       text-transform: capitalize;
-      --background: #031d08;
+      --background: #091531;
     }
   }
   &-iconbutton {
-    color: #031d08;
-    --ripple-color: #031d08;
-    --color-focused: #031d08;
-    --background-focused: #031d08;
-    --ion-color-primary: #031d08;
+    color: #091531;
+    --ripple-color: #091531;
+    --color-focused: #091531;
+    --background-focused: #091531;
+    --ion-color-primary: #091531;
   }
 }

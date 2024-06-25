@@ -21,7 +21,7 @@
   }
   &-back {
     margin-left: 4%;
-    color: #fe651d;
+    color: #091531;
   }
   &-category {
     display: grid;
@@ -34,8 +34,8 @@
       margin: 0.5rem;
       font-weight: 600;
       text-transform: capitalize;
-      border: 2px solid #fe651d;
-      color: #fe651d;
+      border: 2px solid #091531;
+      color: #091531;
       border-radius: 4rem;
       --background: transparent;
       .button-inner {
@@ -58,18 +58,18 @@
       text-transform: capitalize;
       margin-left: 2%;
       background: transparent;
-      color: #fe651d;
+      color: #091531;
       font-weight: bold;
     }
     &--button {
       display: flex;
       text-transform: capitalize;
-      --background: #fe651d;
+      --background: #091531;
     }
   }
   &-divider {
     margin-bottom: 1rem;
-    border-top: 1px solid #fe651d;
+    border-top: 1px solid #091531;
   }
   &-accordion {
     margin: 12px;
@@ -78,12 +78,12 @@
     display: block;
     &--button {
       text-transform: capitalize;
-      --background: #fe651d;
+      --background: #091531;
     }
   }
   &-iconbutton {
     color: #67b91f;
-    --ripple-color: #fe651d;
+    --ripple-color: #091531;
     --color-focused: #5cbf05;
     --background-focused: #5cbf05;
     --ion-color-primary: #5cbf05;
