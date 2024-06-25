@@ -1,5 +1,5 @@
 # NewsUp
-## live site : https://news-up.on-fleek.app
+## live site : https://newsup.on-fleek.app
 
 <h3> Angular-Ionic News Application with newsApi, weatherApi., </h3>
 <br/>
