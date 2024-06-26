@@ -1,5 +1,14 @@
 .tab3 {
   padding: 0 5%;
+  ion-searchbar.custom {
+    --background: #6881ff;
+    --color: #fff;
+    --placeholder-color: #fff;
+    --icon-color: #fff;
+    --clear-button-color: #fff;
+  
+    --border-radius: 4px;
+    }
   &-title {
     position: absolute;
     top: 0;

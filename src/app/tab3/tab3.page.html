@@ -4,10 +4,9 @@
   <br />
   <div class="tab3">
     <ion-searchbar
+     class="custom"
       placeholder="search city"
       value="Nagpur"
-      color="light"
-      [ngStyle]="{'padding': '0', 'color':'#474747'}"
       #search
       ngModel
       (ionBlur)="setCity($event)"
